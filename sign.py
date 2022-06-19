@@ -3,20 +3,15 @@ from Crypto.Signature import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
 
-#message = "I want this stream signed"
-message = input("message? ")
-digest = SHA256.new()
-digest.update(message.encode('utf-8'))
+def sign(msg, private_key):
+    # message = "I want this stream signed"
+    digest = SHA256.new()
+    digest.update(msg.encode('utf-8'))
 
-# Load private key previouly generated
-with open ("private_key.pem", "r") as myfile:
-    private_key = RSA.importKey(myfile.read())
+    # Sign the message
+    signer = PKCS1_v1_5.new(private_key)
+    sig = signer.sign(digest)
 
-# Sign the message
-signer = PKCS1_v1_5.new(private_key)
-sig = signer.sign(digest)
+    print("Signature:")
+    return sig.hex()
 
-# sig is bytes object, so convert to hex string.
-# (could convert using b64encode or any number of ways)
-print("Signature:")
-print(sig.hex())
