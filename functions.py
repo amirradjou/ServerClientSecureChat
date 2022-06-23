@@ -1,5 +1,5 @@
 
-import math 
+import math  , random 
 
 def toBinary(a):
   l,m=[],[]
@@ -8,7 +8,6 @@ def toBinary(a):
   for i in l:
     m.append(int(bin(i)[2:]))
   return m
-
 
 
 
@@ -29,6 +28,11 @@ def toString(a):
   return m
 
 
-# mytxt = "ABCD"
-# newOne = toBinary(mytxt)
-# print(toString(newOne))
+def nBitRandom(n):
+
+	# Returns a random number
+	# between 2**(n-1)+1 and 2**n-1'''
+	return(random.randrange(2**(n-1)+1, 2**n-1))
+
+
+print(nBitRandom(234))
