@@ -1,5 +1,5 @@
-
 import math  , random 
+
 
 def toBinary(a):
   l,m=[],[]
@@ -10,29 +10,35 @@ def toBinary(a):
   return m
 
 
-
-def toString(a):
-  l=[]
-  m=""
-  for i in a:
-    b=0
-    c=0
-    k=int(math.log10(i))+1
-    for j in range(k):
-      b=((i%10)*(2**j))   
-      i=i//10
-      c=c+b
-    l.append(c)
-  for x in l:
-    m=m+chr(x)
-  return m
+def convert(list):
+	
+	s = [str(i) for i in list]
+	res = int("".join(s))
+	return(res)
 
 
 def nBitRandom(n):
-
-	# Returns a random number
-	# between 2**(n-1)+1 and 2**n-1'''
 	return(random.randrange(2**(n-1)+1, 2**n-1))
 
+def encrypt(me):
+    en = math.pow(me,e)
+    c = en % n
+    print("Encrypted Message is: ", c)
+    return c
 
-print(nBitRandom(234))
+
+
+message = convert(toBinary(input("Enter txt :")))
+
+p = nBitRandom(151)
+print(p)
+q = nBitRandom(103)
+print(q)
+e = 3
+ 
+n = p * q 
+print(n)
+
+ 
+print("Original Message is: ", message)
+c = encrypt(message)
