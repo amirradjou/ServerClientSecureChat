@@ -58,3 +58,4 @@ This project requires Python 3.x and the following libraries:
 - `Crypto` (for encryption and signing)
 
 Install the required libraries using:
+pip install pycryptodome
